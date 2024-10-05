@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
 	"github.com/twilio/twilio-go"
 	twilioAPI "github.com/twilio/twilio-go/rest/api/v2010"
 	"log"
@@ -14,12 +13,12 @@ import (
 var twilioClient *twilio.RestClient
 
 // Load env
-func init() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatal("Load env error")
-	}
-}
+//func init() {
+//	err := godotenv.Load(".env")
+//	if err != nil {
+//		log.Fatal("Load env error")
+//	}
+//}
 
 func sendWhatsappMessage(to, message string) error {
 	from := os.Getenv("TWILIO_WHATSAPP_FROM")
