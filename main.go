@@ -24,7 +24,7 @@ func init() {
 func sendWhatsappMessage(to, message string) error {
 	from := os.Getenv("TWILIO_WHATSAPP_FROM")
 	to = "whatsapp:" + to
-	
+
 	params := &twilioAPI.CreateMessageParams{
 		From: &from,
 		To:   &to,
