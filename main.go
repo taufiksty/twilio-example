@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 var twilioClient *twilio.RestClient
@@ -22,7 +23,9 @@ var twilioClient *twilio.RestClient
 
 func sendWhatsappMessage(to, message string) error {
 	from := os.Getenv("TWILIO_WHATSAPP_FROM")
-	to = "whatsapp:" + to
+	if !strings.HasPrefix(to, "whatsapp:") {
+		to = "whatsapp:" + to
+	}
 
 	params := &twilioAPI.CreateMessageParams{
 		From: &from,
